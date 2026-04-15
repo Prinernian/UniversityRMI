@@ -1,5 +1,8 @@
 package it.workStation.interfaces;
 
+import it.workStation.model.Student;
+
 public interface StudentService extends java.rmi.Remote{
-    public void getStudent(String studentId) throws java.rmi.RemoteException;
+    Student getStudent(String studentId) throws java.rmi.RemoteException;
+    void registerStudent(Student std) throws java.rmi.RemoteException;
 }
