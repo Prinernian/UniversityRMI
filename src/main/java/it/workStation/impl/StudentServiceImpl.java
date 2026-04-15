@@ -8,7 +8,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.sun.management.HotSpotDiagnosticMXBean.ThreadDumpFormat.JSON;
 
 public class StudentServiceImpl extends UnicastRemoteObject implements StudentService {
     private final Map<String, Student> students = new HashMap<>();
