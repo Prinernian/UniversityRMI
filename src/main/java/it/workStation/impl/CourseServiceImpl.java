@@ -15,7 +15,7 @@ public class CourseServiceImpl extends UnicastRemoteObject implements CourseServ
         super();
         courses.put("1", new Course("1", "Management", "Roger", 23));
         courses.put("2", new Course("2", "CS", "Lion", 11));
-        courses.put("3", new Course("3", "AI", "NeuroThing", 17));
+        courses.put("3", new Course("3", "AI", "NeuroThing", 34));
     }
 
     @Override
