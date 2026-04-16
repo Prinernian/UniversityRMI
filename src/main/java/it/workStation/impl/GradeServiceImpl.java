@@ -31,8 +31,23 @@ public class GradeServiceImpl extends UnicastRemoteObject implements GradeServic
     }
 
     @Override
-    public Grade getStudentGrades(Student studentId, String courseId) throws RemoteException{}
+    public Grade getStudentGrades(Student studentId, String courseId) throws RemoteException{
+        if(studentsGrades.containsKey(studentId)){
+            List<Grade> grades = studentsGrades.get(studentId);
+            for (int i = 0; i < grades.size(); i++){
+                if((grades.get(i).getCourseId()).equals(courseId)){
+                    return grades.get(i);
+                }
+            }
+        }
+        return null;
+    }
 
     @Override
-    public List<Grade> getStudentAllGrades(Student studentId) throws RemoteException{}
+    public List<Grade> getStudentAllGrades(Student studentId) throws RemoteException{
+        if(studentsGrades.containsKey(studentId)){
+            return studentsGrades.get(studentId);
+        }
+        return null;
+    }
 }
