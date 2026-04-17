@@ -8,12 +8,13 @@ import java.util.Map;
 
 import it.workStation.interfaces.GradeService;
 import it.workStation.model.Course;
+import java.rmi.NotBoundException;
 import it.workStation.model.Grade;
 import it.workStation.model.Student;
 
 public class GradeServiceImpl extends UnicastRemoteObject implements GradeService {
     private final Map<Student, List<Grade>> studentsGrades = new HashMap<>();
-    public GradeServiceImpl() throws Exception{
+    public GradeServiceImpl() throws RemoteException{
         super();
     }
     @Override

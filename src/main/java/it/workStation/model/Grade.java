@@ -16,6 +16,9 @@ public class Grade implements Serializable {
         this.grade = grade;
         this.date = date;
     }
+
+
+
     public void setGrade(double grade) {
         this.grade = grade;
     }

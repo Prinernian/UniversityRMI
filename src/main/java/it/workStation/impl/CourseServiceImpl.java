@@ -11,11 +11,11 @@ import java.util.*;
 public class CourseServiceImpl extends UnicastRemoteObject implements CourseService {
     private final Map<String, Course> courses = new HashMap<>();
     private final Map<String, List<Student>> enrollments = new HashMap<>();
-    public CourseServiceImpl() throws Exception {
+    public CourseServiceImpl() throws RemoteException {
         super();
-        courses.put("1", new Course("1", "Management", "Roger", 23));
-        courses.put("2", new Course("2", "CS", "Lion", 11));
-        courses.put("3", new Course("3", "AI", "NeuroThing", 34));
+        courses.put("1", new Course("1", "Management", "Roger", 9));
+        courses.put("2", new Course("2", "CS", "Lion", 6));
+        courses.put("3", new Course("3", "AI", "NeuroThing", 12));
     }
 
     @Override
@@ -38,6 +38,20 @@ public class CourseServiceImpl extends UnicastRemoteObject implements CourseServ
             return enrollments.get(courseId);
         }
         return List.of();
+    }
+
+    @Override
+    public List<Course> getStudentCourses(String studentId){
+        List<Course> crs = new ArrayList<>();
+        for(Map.Entry<String, List<Student>> data: enrollments.entrySet()){
+           List<Student> std = data.getValue();
+           for(int i = 0; i < std.size(); i++) {
+               if (std.get(i).getId().equals(studentId)) {
+                   crs.add(courses.get(data.getKey()));
+               }
+           }
+        }
+        return crs;
     }
 
     @Override
