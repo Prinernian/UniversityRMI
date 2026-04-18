@@ -7,6 +7,8 @@ import it.workStation.model.Student;
 import it.workStation.model.Transcript;
 
 import java.net.MalformedURLException;
+// accesses to rmiregistry (bind, rebind, lookup, ...) are provided by static
+// methods of class below:
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -28,14 +30,14 @@ public class TranscriptServiceImpl extends UnicastRemoteObject implements Transc
     @Override
     public Transcript getTranscript(String studentId) throws RemoteException, MalformedURLException, NotBoundException, ParseException {
 
-        StudentService stdService = (StudentService) Naming.lookup("This is StudentService");
+        StudentService stdService = (StudentService) Naming.lookup("StudentService");
         Student std = stdService.getStudent(studentId);
 
-        CourseService crsService = (CourseService)Naming.lookup("This is CourseService");
+        CourseService crsService = (CourseService)Naming.lookup("CourseService");
         List<Course> crs = crsService.getStudentCourses(studentId);
 
 
-        GradeService grdService = (GradeService)Naming.lookup("This is GradeService");
+        GradeService grdService = (GradeService)Naming.lookup("GradeService");
         List<Grade> grd = grdService.getStudentAllGrades(std);
         double sum = 0;
         for (Grade grade : grd) {
