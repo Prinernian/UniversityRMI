@@ -39,4 +39,15 @@ public class Student implements Serializable {
     public int getEnrollmentYear() {
         return enrollmentYear;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Student)) return false;
+        Student other = (Student) obj;
+        return this.id.equals(other.id);
+    }
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

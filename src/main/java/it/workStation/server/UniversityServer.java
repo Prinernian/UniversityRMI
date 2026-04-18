@@ -11,10 +11,11 @@ import java.rmi.registry.*;
 import java.time.LocalDate;
 
 public class UniversityServer {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         try {
             // Create an object of the interface
             // implementation class
+            System.out.println("server is started ...");
             StudentServiceImpl students = new StudentServiceImpl();
             CourseServiceImpl courses = new CourseServiceImpl();
             GradeServiceImpl grades = new GradeServiceImpl();
@@ -24,6 +25,7 @@ public class UniversityServer {
             Naming.rebind("rmi://localhost:1099" + "/CourseService", courses);
             Naming.rebind("rmi://localhost:1099" + "/GradeService", grades);
             Naming.rebind("rmi://localhost:1099" + "/Transcripts", transcripts);
+            Thread.sleep(Long.MAX_VALUE);
         } catch (RemoteException | MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {

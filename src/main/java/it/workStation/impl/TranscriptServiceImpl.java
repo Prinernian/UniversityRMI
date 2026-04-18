@@ -30,14 +30,14 @@ public class TranscriptServiceImpl extends UnicastRemoteObject implements Transc
     @Override
     public Transcript getTranscript(String studentId) throws RemoteException, MalformedURLException, NotBoundException, ParseException {
 
-        StudentService stdService = (StudentService) Naming.lookup("StudentService");
+        StudentService stdService = (StudentService) Naming.lookup("rmi://localhost:1099/StudentService");
         Student std = stdService.getStudent(studentId);
 
-        CourseService crsService = (CourseService)Naming.lookup("CourseService");
+        CourseService crsService = (CourseService)Naming.lookup("rmi://localhost:1099/CourseService");
         List<Course> crs = crsService.getStudentCourses(studentId);
 
 
-        GradeService grdService = (GradeService)Naming.lookup("GradeService");
+        GradeService grdService = (GradeService)Naming.lookup("rmi://localhost:1099/GradeService");
         List<Grade> grd = grdService.getStudentAllGrades(std);
         double sum = 0;
         for (Grade grade : grd) {

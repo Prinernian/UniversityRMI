@@ -49,6 +49,6 @@ public class GradeServiceImpl extends UnicastRemoteObject implements GradeServic
         if(studentsGrades.containsKey(studentId)){
             return studentsGrades.get(studentId);
         }
-        return null;
+        return new ArrayList<>();
     }
 }

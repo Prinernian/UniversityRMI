@@ -22,7 +22,7 @@ public class StudentServiceImpl extends UnicastRemoteObject implements StudentSe
     public void registerStudent(Student std) throws RemoteException{
         students.put(std.getId(), std);
     }
-    public void printStudents(){
+    public void printStudents() throws RemoteException{
         System.out.println(students);
     }
 }
