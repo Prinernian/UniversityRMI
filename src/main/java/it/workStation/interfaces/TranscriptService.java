@@ -7,5 +7,5 @@ import java.rmi.NotBoundException;
 import java.text.ParseException;
 
 public interface TranscriptService extends java.rmi.Remote{
-    public Transcript getTranscript(String studentId) throws java.rmi.RemoteException, MalformedURLException, NotBoundException, ParseException;
+    Transcript getTranscript(String studentId) throws java.rmi.RemoteException, MalformedURLException, NotBoundException, ParseException;
 }

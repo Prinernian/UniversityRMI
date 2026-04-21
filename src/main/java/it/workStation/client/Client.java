@@ -8,6 +8,7 @@ import it.workStation.model.Course;
 import it.workStation.model.Grade;
 import it.workStation.model.Student;
 import it.workStation.model.Transcript;
+import it.workStation.server.UniversityServer;
 
 import java.net.MalformedURLException;
 import java.rmi.*;
@@ -46,10 +47,11 @@ public class Client {
 
         TranscriptService tranService = (TranscriptService) Naming.lookup("rmi://localhost:1099/Transcripts");
         Transcript trs = tranService.getTranscript(std.getId());
-        System.out.println(trs);
+//        System.out.println(trs);
         System.out.println(trs.getStudent().getName());
         System.out.println(trs.getAverage());
         System.out.println(trs.getDate());
+
 
 
 
